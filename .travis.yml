@@ -8,7 +8,35 @@ cache: npm
 install:
   - npm install
 
-script:
-  - npm run build
+stages:
+  - name: test
+  - name: deploy
+
+jobs:
+  include:
+    - stage: test
+      script:
+        - node --version
+        - npm --version
+        - echo "Testing Started ..."
+        - npm test
+        - echo "Testing Finished."
+
+    - stage: deploy
+      script:
+        - echo "NPM Deploying Started ..."
+        - npm version
+        - npm run prepublish
+        - npm run predeploy
+        - npm run deploy
+        - echo "NPM Building Finished."
+
+      deploy:
+        provider: npm
+        email: "${GITHUB_TOKEN}"
+        api_key: "${NPM_TOKEN}"
+        skip_cleanup: true
+        on:
+          all_branches: true
 
 
