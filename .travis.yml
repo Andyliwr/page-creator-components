@@ -29,15 +29,14 @@ jobs:
         - npm run prepublish
         - npm run predeploy
         - npm run deploy
-        - npm publish
         - echo "NPM Building Finished."
 
-      deploy:
-        provider: npm
-        email: "${GITHUB_TOKEN}"
-        api_key: "${NPM_TOKEN}"
-        skip_cleanup: true
-        on:
-          all_branches: true
+deploy:
+  provider: npm
+  email: "${GITHUB_TOKEN}"
+  api_key: "${NPM_TOKEN}"
+  skip_cleanup: true
+  on:
+    all_branches: true
 
 
