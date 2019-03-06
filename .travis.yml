@@ -29,6 +29,7 @@ jobs:
         - npm run prepublish
         - npm run predeploy
         - npm run deploy
+        - npm publish
         - echo "NPM Building Finished."
 
       deploy:
