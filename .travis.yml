@@ -3,10 +3,10 @@ language: node_js
 node_js:
   - stable
 
-cache: npm
+cache: yarn
 
 install:
-  - npm install
+  - yarn install
 
 stages:
   - name: test
@@ -14,16 +14,15 @@ stages:
 
 script:
   - node --version
-  - npm --version
+  - yarn --version
   - echo "Testing Started ..."
-  - npm test
+  - yarn test
   - echo "Testing Finished."
-  - echo "NPM Deploying Started ..."
-  - npm version
-  - npm run prepublish
-  - npm run predeploy
-  - npm run deploy
-  - echo "NPM Building Finished."
+  - echo "Yarn Deploying Started ..."
+  - yarn run prepublish
+  - yarn run predeploy
+  - yarn run deploy
+  - echo "Yarn Building Finished."
 
 deploy:
   provider: npm
