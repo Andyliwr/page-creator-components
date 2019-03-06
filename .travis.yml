@@ -12,24 +12,18 @@ stages:
   - name: test
   - name: deploy
 
-jobs:
-  include:
-    - stage: test
-      script:
-        - node --version
-        - npm --version
-        - echo "Testing Started ..."
-        - npm test
-        - echo "Testing Finished."
-
-    - stage: deploy
-      script:
-        - echo "NPM Deploying Started ..."
-        - npm version
-        - npm run prepublish
-        - npm run predeploy
-        - npm run deploy
-        - echo "NPM Building Finished."
+script:
+  - node --version
+  - npm --version
+  - echo "Testing Started ..."
+  - npm test
+  - echo "Testing Finished."
+  - echo "NPM Deploying Started ..."
+  - npm version
+  - npm run prepublish
+  - npm run predeploy
+  - npm run deploy
+  - echo "NPM Building Finished."
 
 deploy:
   provider: npm
