@@ -3,15 +3,16 @@
  * @Author: lidikang
  * @LastEditors: Please set LastEditors
  * @Date: 2019-03-05 16:38:56
- * @LastEditTime: 2019-03-05 17:12:55
+ * @LastEditTime: 2019-03-07 12:09:45
  */
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Base from '../../Base'
 
 import styles from './Image.css'
 
-export default class Image extends Component {
+export default Base(class Image extends Component {
   static propTypes = {
     src: PropTypes.string,
     alt: PropTypes.string,
@@ -20,11 +21,11 @@ export default class Image extends Component {
   }
 
   render() {
-    const { src, alt, width, height } = this.props
+    const { id, src, alt, width, height } = this.props
 
-    return <img className={styles.main} src={src} alt={alt} width={width} height={height} />
+    return <img data-id={id} className={styles.main} src={src} alt={alt} width={width} height={height} />
   }
-}
+})
 
 Image.defaultProps = {
   src: 'https://s.thsi.cn/js/m/kh/page-creator/img/default.png',
