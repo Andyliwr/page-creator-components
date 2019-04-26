@@ -2,6 +2,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+const evalCode = eval
+
 const Base = BaseComponent => {
   return class extends React.Component {
     static defaultProps = {
@@ -80,16 +82,15 @@ const Base = BaseComponent => {
         return this.transMethodDetail(detail.none)
       } else {
         // 条件执行事件
-        return {
-          success: this.transMethodDetail(detail.true),
-          fail: this.transMethodDetail(detail.false)
-        }
+        const success = this.transMethodDetail(detail.true)
+        const fail = this.transMethodDetail(detail.true)
+        const conditionFn = evalCode(unescape(condition))
+        if (typeof conditionFn === 'function') return () => { conditionFn(success, fail) }
       }
     }
 
     transMethodDetail = detail => {
       const { methods } = this.props
-      const evalCode = eval
       if (!detail) {
         return null
       }
