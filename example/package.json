@@ -5,14 +5,17 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
+    "cross-env": "^5.2.0",
+    "html-encoder-decoder": "^1.3.8",
+    "page-creator-components": "file:../dist",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "page-creator-components": "link:..",
+    "react-html-parser": "^2.0.2",
     "react-scripts": "^1.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cross-env PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

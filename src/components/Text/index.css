@@ -1,0 +1,10 @@
+.main {
+  font-size: 14px;
+  line-height: 1.7em;
+  cursor: default;
+}
+
+.main > * {
+  padding: 0;
+  margin: 0;
+}
