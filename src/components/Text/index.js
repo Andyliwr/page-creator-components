@@ -26,10 +26,10 @@ export default Base(
     };
 
     render() {
-      const { compid, html } = this.props
+      const { compid, html, onClick = null } = this.props
 
       return (
-        <div id={compid} className={styles.main}>
+        <div id={compid} className={styles.main} onClick={onClick}>
           {ReactHtmlParser(HTMLDecoderEncoder.decode(html))}
         </div>
       )

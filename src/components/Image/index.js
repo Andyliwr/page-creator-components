@@ -26,7 +26,7 @@ export default Base(
     };
 
     render() {
-      const { compid, src, alt } = this.props
+      const { compid, src, alt, onClick = null } = this.props
 
       return (
         <img
@@ -34,6 +34,7 @@ export default Base(
           className={styles.main}
           src={src}
           alt={alt}
+          onClick={onClick}
         />
       )
     }
