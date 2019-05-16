@@ -3,7 +3,7 @@
  * @Author: lidikang
  * @LastEditors: lidikang
  * @Date: 2019-03-05 16:38:56
- * @LastEditTime: 2019-04-26 15:39:03
+ * @LastEditTime: 2019-05-07 17:23:42
  */
 
 import React from 'react'
@@ -22,7 +22,8 @@ export default Base(
     static propTypes = {
       compid: PropTypes.string,
       src: PropTypes.string,
-      alt: PropTypes.string
+      alt: PropTypes.string,
+      onClick: PropTypes.func
     };
 
     render() {
