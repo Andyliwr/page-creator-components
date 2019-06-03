@@ -7,7 +7,6 @@
  */
 import React from 'react'
 import Base from '../../Base'
-import axios from 'axios'
 import styles from './index.less'
 
 export default Base(

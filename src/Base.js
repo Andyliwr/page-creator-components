@@ -23,7 +23,8 @@ const Base = BaseComponent => {
       events.forEach(item => {
         // const methodName = this.transMethodName(item.event_type)
         const methodBody = this.transMethodBody(item.condition, item.event_detail)
-        this.live(document, `#${compid}${item.event_element ? ` *[data-name="${item.event_element}"]` : ''}`, item.event_type, methodBody)
+        const selector = item.event_element === 'self' ? `#${compid}` : `#${compid}${item.event_element ? ` *[data-name="${item.event_element}"]` : ''}`
+        this.live(document, selector, item.event_type, methodBody)
       })
     }
 
@@ -104,13 +105,13 @@ const Base = BaseComponent => {
             window.location.href = detail.link_url
           }
           break
-        // 协议
+          // 协议
         case 'protocal':
           func = () => {
             evalCode(unescape(detail.protocal_codes))
           }
           break
-        // 图片弹窗
+          // 图片弹窗
         case 'img_dialog':
           if (detail.img_dialog_jump_type === 'link') {
             callback = () => {
@@ -129,7 +130,7 @@ const Base = BaseComponent => {
             })
           }
           break
-        // 问题弹窗
+          // 问题弹窗
         case 'text_dialog':
           if (detail.text_dialog_jump_type === 'link') {
             callback = () => {
@@ -150,7 +151,7 @@ const Base = BaseComponent => {
             })
           }
           break
-        // 客服按钮
+          // 客服按钮
         case 'customer_service':
           if (detail.customer_service_type === 'kefu') {
             func = () => {
@@ -162,13 +163,13 @@ const Base = BaseComponent => {
             }
           }
           break
-        // 锚点
+          // 锚点
         case 'anchor_point':
           func = () => {
             window.location.hash = `#${detail.anchor_point_value}`
           }
           break
-        // 自定义代码
+          // 自定义代码
         case 'custom_event':
           func = () => {
             evalCode(unescape(detail.custom_event_code))
